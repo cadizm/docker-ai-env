@@ -39,6 +39,11 @@ RUN curl -s https://raw.githubusercontent.com/torch/ezinstall/master/install-dep
     git clone https://github.com/torch/distro.git /torch --recursive && \
     cd /torch && ./install.sh -b
 
+RUN . /torch/install/bin/torch-activate && \
+    luarocks install nngraph && \
+    luarocks install optim && \
+    luarocks install nn
+
 RUN groupadd -r dev --gid=222 && useradd -r -g dev --uid=222 dev && \
     chown -R dev:dev ~dev && \
     echo ". /torch/install/bin/torch-activate" >> ~dev/.bashrc
