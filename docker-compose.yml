@@ -1,0 +1,8 @@
+version: '3.6'
+services:
+  ai-env:
+    image: cadizm/ai-env
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - $PWD:/src
